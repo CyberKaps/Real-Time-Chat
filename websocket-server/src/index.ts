@@ -1,6 +1,7 @@
 import { server as WebSocketServer } from "websocket";
 import http from 'http';
 import { UserManager } from "./UserManager";
+import { InitMessageType, SupportedMessage, UpvoteMessage, UpvoteMessageType, UserMessage, UserMessageType } from "./messages";
 
 var server  = http.createServer(function(request: any, response: any) {
     console.log((new Date()) + ' Received request for ' + request.url);
@@ -50,6 +51,6 @@ wsServer.on('request', function(request) {
     });
 });
 
-function messageHandler(message: Message) {
-    if P
+function messageHandler(type: SupportedMessage, message: InitMessageType | UserMessageType | UpvoteMessageType) {
+    
 }
