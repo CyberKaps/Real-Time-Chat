@@ -1,5 +1,6 @@
 import { server as WebSocketServer } from "websocket";
 import http from 'http';
+import { UserManager } from "./UserManager";
 
 var server  = http.createServer(function(request: any, response: any) {
     console.log((new Date()) + ' Received request for ' + request.url);
@@ -34,8 +35,13 @@ wsServer.on('request', function(request) {
     connection.on('message', function(message) {
         //Todo add rate limitting logic here
         if (message.type === 'utf8') {
-            console.log('Received Message: ' + message.utf8Data);
-            connection.sendUTF(message.utf8Data);
+            try {
+                messageHandler(JSON.parse(message.utf8Data));
+            } catch(e) {
+
+            }
+            // console.log('Received Message: ' + message.utf8Data);
+            // connection.sendUTF(message.utf8Data);
         }
           
     });
@@ -43,3 +49,7 @@ wsServer.on('request', function(request) {
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
 });
+
+function messageHandler(message: Message) {
+    if P
+}
