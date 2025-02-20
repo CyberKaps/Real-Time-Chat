@@ -1,5 +1,5 @@
 import { server as WebSocketServer } from "websocket";
-import http from 'http';
+import http, { IncomingMessage } from 'http';
 import { UserManager } from "./UserManager";
 import { InitMessageType, SupportedMessage, UpvoteMessage, UpvoteMessageType, UserMessage, UserMessageType } from "./messages";
 
@@ -51,6 +51,6 @@ wsServer.on('request', function(request) {
     });
 });
 
-function messageHandler(type: SupportedMessage, message: InitMessageType | UserMessageType | UpvoteMessageType) {
-    
+function messageHandler(message: IncomingMessage) {
+    if (message.type = IncomingMessage)
 }
